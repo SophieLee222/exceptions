@@ -27,4 +27,23 @@ public class ShopRepositoryTest {
             repo.removeById(14);
         });
     }
+
+    @Test
+    public void shouldAddElement() {
+        repo.add(item1);
+
+        Product expected = item1;
+        Product actual = repo.findById(12);
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldGenerateAlreadyExistsException() {
+        repo.add(item1);
+
+        Assertions.assertThrows(AlreadyExistsException.class, () -> {
+            repo.addById(12);
+        });
+    }
 }

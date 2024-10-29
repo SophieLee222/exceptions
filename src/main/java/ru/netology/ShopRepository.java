@@ -63,4 +63,13 @@ public class ShopRepository {
             );
         }
     }
+
+    public void addById(int id) {
+        Product product = findById(id);
+        if (product == findById(id)) {
+            throw new AlreadyExistsException(
+                    "Element with id: " + id + " already exists"
+            );
+        }
+    }
 }
